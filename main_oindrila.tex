@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+    language=bash,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+\begin{document}
+
+\LARGE
+    \textbf{{Software Tools and Technology\\
+        -: Lab Notebook :-}}
+    \vspace{0.5cm}\\
+\textbf{Name} : Oindrila Chatterjee\\
+\textbf{Roll No.} : 30059223022 
+
+
+
+\newpage
+\title{Git Branching, Merging, and Conflict Resolution}
+\author{}
+\date{}
+
+
+\maketitle
+
+\section*{Objective}
+The objective of this assignment was to demonstrate proficiency in Git branching, merging, and conflict resolution. The tasks involved creating a Git repository, working with branches, pushing changes, merging branches, resolving conflicts, and deleting branches upon completion.
+
+\section*{Steps Followed}
+\begin{enumerate}
+    \item \textbf{Create a new repository on GitHub}\\
+    Created a new GitHub repository called \texttt{git-advanced}. The repository was initialized without any files.
+    
+    \item \textbf{Clone the repository to the local machine}\\
+    Used the command \texttt{git clone <repository\_url>} to clone the repository locally.
+    
+    \item \textbf{Create a new branch "feature-1" and switch to it}\\
+    Used the following command:
+    \begin{lstlisting}
+    git checkout -b feature-1
+    \end{lstlisting}
+    This command created a new branch called \texttt{feature-1} and switched to it.
+
+    \item \textbf{Create and modify \texttt{shared.txt}}\\
+    Created a new file named \texttt{shared.txt} with the following content:
+    \begin{lstlisting}[language={}]
+    This is a shared file.
+    Line 1: Original text.
+    Line 2: Original text.
+    \end{lstlisting}
+    Staged and committed the file:
+    \begin{lstlisting}
+    git add shared.txt
+    git commit -m "Add shared.txt with original content"
+    \end{lstlisting}
+
+    \item \textbf{Push "feature-1" branch to GitHub}\\
+    Used the command \texttt{git push origin feature-1} to push the branch to GitHub.
+
+    \item \textbf{Create another branch "feature-2"}\\
+    Switched back to the \texttt{main} branch and created another branch:
+    \begin{lstlisting}
+    git checkout main
+    git checkout -b feature-2
+    \end{lstlisting}
+
+    \item \textbf{Checkout and modify \texttt{shared.txt} in "feature-2"}\\
+    Checked out the \texttt{shared.txt} file from the \texttt{main} branch. Modified the second line in \texttt{shared.txt}:
+    \begin{lstlisting}[language={}]
+    Line 2: Modified text in feature-2.
+    \end{lstlisting}
+    Staged and committed the changes:
+    \begin{lstlisting}
+    git add shared.txt
+    git commit -m "Modify Line 2 in feature-2"
+    \end{lstlisting}
+
+    \item \textbf{Push "feature-2" branch to GitHub}\\
+    Used the command \texttt{git push origin feature-2} to push the branch.
+
+    \item \textbf{Modify \texttt{shared.txt} in "feature-1"}\\
+    Switched back to the \texttt{feature-1} branch:
+    \begin{lstlisting}
+    git checkout feature-1
+    \end{lstlisting}
+    Modified the second line in \texttt{shared.txt}:
+    \begin{lstlisting}[language={}]
+    Line 2: Modified text in feature-1.
+    \end{lstlisting}
+    Staged and committed the changes:
+    \begin{lstlisting}
+    git add shared.txt
+    git commit -m "Modify Line 2 in feature-1"
+    \end{lstlisting}
+
+    \item \textbf{Push "feature-1" branch to GitHub}\\
+    Used the command \texttt{git push origin feature-1} to push the branch.
+
+    \item \textbf{Merge "feature-1" into the main branch}\\
+    Merged \texttt{feature-1} into the \texttt{main} branch:
+    \begin{lstlisting}
+    git checkout main
+    git merge feature-1
+    \end{lstlisting}
+
+    \item \textbf{Merge "feature-2" into the main branch (conflict)}\\
+    Attempted to merge \texttt{feature-2} into the \texttt{main} branch:
+    \begin{lstlisting}
+    git merge feature-2
+    \end{lstlisting}
+    This resulted in a conflict in \texttt{shared.txt} due to the different modifications made to Line 2.
+
+    \item \textbf{Resolve the conflict}\\
+    Edited the \texttt{shared.txt} file to resolve the conflict:
+    \begin{lstlisting}[language={}]
+    This is a shared file.
+    Line 1: Original text.
+    Line 2: Merged text from both feature-1 and feature-2.
+    \end{lstlisting}
+    Staged and committed the resolution:
+    \begin{lstlisting}
+    git add shared.txt
+    git commit -m "Resolve conflict between feature-1 and feature-2"
+    \end{lstlisting}
+
+    \item \textbf{Push the updated main branch to GitHub}\\
+    Pushed the resolved changes to the \texttt{main} branch:
+    \begin{lstlisting}
+    git push origin main
+    \end{lstlisting}
+
+    \item \textbf{Delete the "feature-1" and "feature-2" branches}\\
+    Deleted the branches after merging.
+\end{enumerate}
+
+\end{document}
